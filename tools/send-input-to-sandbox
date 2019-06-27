@@ -1,0 +1,3 @@
+data_dir="data/TESTS/LUM-$1"
+ssh sandbox "mkdir -p $data_dir"
+scp "$2" sandbox:$data_dir

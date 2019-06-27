@@ -1,0 +1,116 @@
+" directories
+
+set backupdir=~/.cache/vim/backup//
+set directory=~/.cache/vim/swap//
+set undodir=~/.cache/vim/undo//
+if !isdirectory(&backupdir)
+  call mkdir(&backupdir, "p", 0700)
+endif
+if !isdirectory(&directory)
+  call mkdir(&directory, "p", 0700)
+endif
+if !isdirectory(&undodir)
+  call mkdir(&undodir, "p", 0700)
+endif
+
+" basic options
+
+syntax on
+set nu
+set cursorline
+set mouse=nc
+set wildignore=*.a,*.d,*.o
+set foldlevelstart=99
+set autoindent
+set autoread
+set backspace=indent,eol,start
+set belloff=all
+set complete=.,w,b,u,t
+set cscopeverbose
+set encoding=utf-8
+set fillchars=vert:│,fold:·
+set nofsync
+set formatoptions=tcqj
+set history=10000
+set hlsearch
+set incsearch
+set langnoremap
+set laststatus=2
+set listchars=tab:>\ ,trail:-,nbsp:+
+set nocompatible
+set ruler
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize
+set showcmd
+set sidescroll=1
+set smarttab
+set tabpagemax=50
+set tags=./tags;,tags
+set ttyfast
+set viminfo=!,'100,<50,s10,h
+set wildmenu
+set ttimeoutlen=100
+
+" status line
+set statusline=%<%f\ %y%m%r%=%-12.(%l:%c%)\ %-3.($%B%)\ %-5L\ %P
+
+" theme
+
+let g:jellybeans_overrides = {
+\  'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+colorscheme jellybeans
+
+" binds
+
+nnoremap q a
+nnoremap Q A
+
+" leader binds
+
+let mapleader = ","
+nnoremap <leader>t :tab split<CR>
+" hide search
+nnoremap <leader><space> :nohlsearch<CR>
+" system clipboard
+if has("clipboard")
+  nnoremap <leader>p "+p
+  vnoremap <leader>p "+p
+  nnoremap <leader>P "+P
+  vnoremap <leader>P "+P
+  vnoremap <leader>y "+y
+  nnoremap <leader>Y "+Y
+endif
+" counts (echo v:statusmsg)
+noremap <leader>n g<C-g>
+
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+
+" file types
+
+filetype plugin indent on " must be run early
+
+set fo-=c fo-=r noet ts=4 sts=0 sw=0
+
+function! DefaultFileType()
+  setlocal fo-=c fo-=r sts=0 sw=0
+  hi ColorColumn cterm=reverse
+endfunction
+
+augroup filetypesconfig
+  autocmd!
+
+  autocmd BufNewFile,BufReadPre,FileReadPre * call DefaultFileType()
+  autocmd FileType * call DefaultFileType()
+
+  autocmd BufNewFile,BufReadPost *.sch setlocal ft=xml
+augroup END
+
+" neovim features
+
+if has("nvim")
+  " exit terminal mode
+  tnoremap <Esc> <C-\><C-n>
+  " change ShaDa path
+  set shada+=n~/.cache/vim/shada
+endif
