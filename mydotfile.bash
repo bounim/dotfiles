@@ -17,3 +17,5 @@ git config --global user.email Kimberley@lumithd.fr
 [ -f bash/bashrc ] && cp bash/bashrc ${HOME}/.bashrc
 [ -f nvim/nvimrc ] && cp nvim/nvimrc ${HOME}/.nvimrc
 [ -f tools/tmux.conf ] && cp tools/tmux.conf ${HOME}/.tmux.conf
+
+source .bashrc
