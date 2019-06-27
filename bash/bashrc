@@ -108,5 +108,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source sandbox/tools/rc.sh
 export PATH=/home/debian/dotfiles/shell/script:/home/debian/sandbox/tools:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/debian/tools
