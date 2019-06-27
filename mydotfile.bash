@@ -11,9 +11,9 @@ sudo apt-get install -y neovim
 git config --global user.name Kimberley
 git config --global user.email Kimberley@lumithd.fr
 
-git clone https://git.lumithd.fr/root/lumi_meta.git ${HOME}/lumi_meta
-git clone https://git.lumithd.fr/root/lumiback.git ${HOME}/lumiback
+[ -d ${HOME}/lumi_meta ] || git clone https://git.lumithd.fr/root/lumi_meta.git ${HOME}/lumi_meta
+[ -d ${HOME}/lumiback ] || git clone https://git.lumithd.fr/root/lumiback.git ${HOME}/lumiback
 
-mv bash/bashrc ${HOME}/.bashrc
-mv nvim/nvimrc ${HOME}/.nvimrc
-mv tools/tmux.conf ${HOME}/.tmux.conf
+[ -f bash/bashrc ] && mv bash/bashrc ${HOME}/.bashrc
+[ -f nvim/nvimrc ] && mv nvim/nvimrc ${HOME}/.nvimrc
+[ -f tools/tmux.conf ] && mv tools/tmux.conf ${HOME}/.tmux.conf
