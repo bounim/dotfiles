@@ -14,6 +14,6 @@ git config --global user.email Kimberley@lumithd.fr
 [ -d ${HOME}/lumi_meta ] || git clone https://git.lumithd.fr/root/lumi_meta.git ${HOME}/lumi_meta
 [ -d ${HOME}/lumiback ] || git clone https://git.lumithd.fr/root/lumiback.git ${HOME}/lumiback
 
-[ -f bash/bashrc ] && mv bash/bashrc ${HOME}/.bashrc
-[ -f nvim/nvimrc ] && mv nvim/nvimrc ${HOME}/.nvimrc
-[ -f tools/tmux.conf ] && mv tools/tmux.conf ${HOME}/.tmux.conf
+[ -f bash/bashrc ] && cp bash/bashrc ${HOME}/.bashrc
+[ -f nvim/nvimrc ] && cp nvim/nvimrc ${HOME}/.nvimrc
+[ -f tools/tmux.conf ] && cp tools/tmux.conf ${HOME}/.tmux.conf
